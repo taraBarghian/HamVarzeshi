@@ -1,0 +1,30 @@
+<h1>Listing Gyms</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Avatar</th>
+      <th>Description</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for gym <- @gyms do %>
+    <tr>
+      <td><img class="object-scale-down h-20 w-20" src="<%= HamVarzeshi.Avatar.url({gym.avatar , gym}) %>" /></td>
+      <td><%= gym.name %></td>
+      <td><%= gym.description %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.gym_path(@conn, :show, gym) %></span>
+        <span><%= link "Edit", to: Routes.gym_path(@conn, :edit, gym) %></span>
+        <span><%= link "Delete", to: Routes.gym_path(@conn, :delete, gym), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Gym", to: Routes.gym_path(@conn, :new) %></span>

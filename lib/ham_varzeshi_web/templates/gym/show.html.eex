@@ -1,0 +1,24 @@
+<h1>Show Gym</h1>
+
+<ul>
+
+  <li>
+    <div>Avatar:</div>
+    <img  class="object-scale-down h-20 w-20" src="<%= HamVarzeshi.Avatar.url({@gym.avatar , @gym}) %>"/>
+  </li>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @gym.name %>
+  </li>
+
+
+  <li>
+    <strong>Description:</strong>
+    <%= @gym.description %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.gym_path(@conn, :edit, @gym) %></span>
+<span><%= link "Back", to: Routes.gym_path(@conn, :index) %></span>
