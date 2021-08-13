@@ -4,7 +4,7 @@
 
   <li>
     <div>Avatar:</div>
-    <img  class="object-scale-down h-20 w-20" src="<%= HamVarzeshi.Avatar.url({@gym.avatar , @gym}) %>"/>
+    <img  class="object-contain h-25 w-25" src="<%= HamVarzeshi.Avatar.url({@gym.avatar , @gym}) %>"/>
   </li>
 
   <li>

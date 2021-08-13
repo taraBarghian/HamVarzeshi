@@ -7,6 +7,7 @@ defmodule HamVarzeshiWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug HamVarzeshiWeb.Plugs.SetUser
   end
 
   pipeline :api do
@@ -18,13 +19,16 @@ defmodule HamVarzeshiWeb.Router do
 
     get "/", PageController, :index
     resources "/gyms" , GymController
+
   end
 
-  scope "/auth", OAuthApp do
+  scope "/auth", HamVarzeshiWeb do
     pipe_through :browser
 
+    get "/signout", AuthController, :signout
     get "/:provider", AuthController, :request
     get "/:provider/callback", AuthController, :callback
+
   end
 
 
