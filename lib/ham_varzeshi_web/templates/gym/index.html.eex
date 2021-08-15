@@ -20,6 +20,7 @@
 
       <td>
         <span><%= link "Show", to: Routes.gym_path(@conn, :show, gym) %></span>
+        <span><%= link "Reserve", to: Routes.user_gym_path(@conn, :reserve, gym) %></span>
         <%= if @conn.assigns.user && @conn.assigns.user.id == gym.user_id do %>
         <span><%= link "Edit", to: Routes.gym_path(@conn, :edit, gym) %></span>
         <span><%= link "Delete", to: Routes.gym_path(@conn, :delete, gym), method: :delete, data: [confirm: "Are you sure?"] %></span>

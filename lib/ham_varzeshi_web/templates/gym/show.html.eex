@@ -18,6 +18,11 @@
     <%= @gym.description %>
   </li>
 
+   <li>
+    <strong>Reserved by:</strong>
+    <%= @user_gym.user_id %>
+  </li>
+
 </ul>
 
 <span><%= link "Edit", to: Routes.gym_path(@conn, :edit, @gym) %></span>

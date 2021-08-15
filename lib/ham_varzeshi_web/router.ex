@@ -17,8 +17,9 @@ defmodule HamVarzeshiWeb.Router do
   scope "/", HamVarzeshiWeb do
     pipe_through :browser
 
-    get "/", PageController, :index
+
     resources "/gyms" , GymController
+    get "/gyms/:id/reserve" , UserGymController , :reserve
 
   end
 
