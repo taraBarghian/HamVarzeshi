@@ -4,10 +4,12 @@ defmodule HamVarzeshi.App do
   """
 
   import Ecto.Query, warn: false
+  import Ecto
+
   alias HamVarzeshi.Repo
-
   alias HamVarzeshi.App.Gym
-
+  alias HamVarzeshi.App.UserGym
+  alias HamVarzeshi.App.User
   @doc """
   Returns the list of gyms.
 
@@ -49,11 +51,12 @@ defmodule HamVarzeshi.App do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_gym(attrs \\ %{}) do
-    %Gym{}
+  def create_gym(gym ,attrs \\ %{}) do
+    gym
     |> Gym.changeset(attrs)
     |> Repo.insert()
   end
+
 
   @doc """
   Updates a gym.
@@ -102,7 +105,6 @@ defmodule HamVarzeshi.App do
     Gym.changeset(gym, attrs)
   end
 
-  alias HamVarzeshi.App.User
 
   @doc """
   Returns the list of users.
@@ -197,4 +199,14 @@ defmodule HamVarzeshi.App do
   def change_user(%User{} = user, attrs \\ %{}) do
     User.changeset(user, attrs)
   end
+
+
+  def reserve_gym(user_gym ,attrs \\ %{}) do
+    user_gym
+    |>UserGym.changeset(attrs)
+    |> Repo.insert()
+  end
+
+  def get_user_gym!(id), do: Repo.get!(UserGym, id)
+
 end

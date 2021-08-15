@@ -5,13 +5,18 @@
     </div>
   <% end %>
 
+
+  <div>
   <%= label f, :name %>
   <%= text_input f, :name %>
   <%= error_tag f, :name %>
+  </div>
 
+  <div>
   <%= label f, :description %>
   <%= text_input f, :description %>
   <%= error_tag f, :description %>
+  </div>
 
   <div>
     <%= submit "Save" %>

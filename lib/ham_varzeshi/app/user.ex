@@ -9,6 +9,7 @@ defmodule HamVarzeshi.App.User do
     field :provider, :string
     field :token, :string
 
+    has_many :gyms, HamVarzeshi.App.Gym
 
     timestamps()
   end

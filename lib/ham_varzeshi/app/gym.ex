@@ -8,6 +8,8 @@ defmodule HamVarzeshi.App.Gym do
     field :description, :string
     field :name, :string
 
+    belongs_to :user , HamVarzeshi.App.User
+
     timestamps()
   end
 
