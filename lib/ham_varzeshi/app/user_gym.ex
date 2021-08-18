@@ -4,8 +4,8 @@ defmodule HamVarzeshi.App.UserGym do
   import Ecto.Changeset
   use Arc.Ecto.Schema
 
-  schema "users_gyms" do
-    belongs_to :user , HamVarzeshi.App.User
+  schema "user_gym" do
+    belongs_to :user, HamVarzeshi.App.User
     belongs_to :gym , HamVarzeshi.App.Gym
 
 
@@ -15,8 +15,8 @@ defmodule HamVarzeshi.App.UserGym do
   @doc false
   def changeset(user_gym, attrs) do
     user_gym
-    |> cast(attrs, [:user, :gym])
-    |> validate_required([:user, :gym])
+    |> cast(attrs, [:user_id, :gym_id])
+    |> validate_required([:user_id, :gym_id])
   end
 
 

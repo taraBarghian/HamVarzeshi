@@ -18,10 +18,6 @@
     <%= @gym.description %>
   </li>
 
-   <li>
-    <strong>Reserved by:</strong>
-    <%= @user_gym.user_id %>
-  </li>
 
 </ul>
 

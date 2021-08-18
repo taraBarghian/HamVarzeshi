@@ -38,7 +38,7 @@ defmodule HamVarzeshi.Avatar do
 
   # Provide a default URL if there hasn't been a file uploaded
   def default_url(version, scope) do
-     HamVarzeshiWeb.Endpoint.url <> "/images/gyms/avatars/default.png"
+     HamVarzeshiWeb.Endpoint.url <> "uploads/gyms/avatars/default.png"
   end
 
   # Specify custom headers for s3 objects

@@ -1,0 +1,22 @@
+<h1>Listing Users!</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Gym</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for gym <- @user_gym do %>
+    <tr>
+
+      <td><%= gym.user_id %></td>
+      <td><%= gym.gym_id %></td>
+
+
+    </tr>
+<% end %>
+  </tbody>
+</table>

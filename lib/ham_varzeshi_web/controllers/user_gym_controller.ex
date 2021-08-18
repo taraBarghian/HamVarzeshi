@@ -2,21 +2,31 @@ defmodule HamVarzeshiWeb.UserGymController do
   use HamVarzeshiWeb, :controller
 
   import Ecto
-  import HamVarzeshi.Repo
-  alias HamVarzeshi.App
+  alias HamVarzeshi.Repo
+  alias HamVarzeshi.App.UserGym
 
-  def reserve(conn, %{"id" => id, "user_gym_params" => user_gym_params}) do
-    user_gym = App.get_user_gym!(id)
+  def reserve(conn, %{"id" => gym_id}) do
+    # user_gym = App.get_user_gym!(id)
 
-    case App.reserve_gym(user_gym, user_gym_params) do
-      {:ok, user_gym} ->
+    changeset = UserGym.changeset(%UserGym{},%{gym_id: gym_id, user_id: conn.assigns.user.id } )
+
+    case Repo.insert(changeset) do
+      {:ok, _param} ->
         conn
-        |> put_flash(:info, "Gym reserved successfully.")
-        |> redirect(to: Routes.gym_path(conn, :show, user_gym))
+        |> put_flash(:info , "khar b to an")
+        |> redirect(to: Routes.gym_path(conn, :index))
 
-      {:error, %Ecto.Changeset{} = changeset} ->
-        render(conn, "edit.html", user_gym: user_gym, changeset: changeset)
+      {:error, reason} ->
+        conn
+        |> put_flash(:erro , "khar b to an tarin an")
+        |> redirect(to: Routes.gym_path(conn, :index))
+
     end
+
+
+
+
+
 
   end
 

@@ -201,12 +201,5 @@ defmodule HamVarzeshi.App do
   end
 
 
-  def reserve_gym(user_gym ,attrs \\ %{}) do
-    user_gym
-    |>UserGym.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  def get_user_gym!(id), do: Repo.get!(UserGym, id)
 
 end

@@ -20,6 +20,8 @@ defmodule HamVarzeshiWeb.Router do
 
     resources "/gyms" , GymController
     get "/gyms/:id/reserve" , UserGymController , :reserve
+    # post "/gyms/:id/reserve" , UserGymController , :reserve
+
 
   end
 
