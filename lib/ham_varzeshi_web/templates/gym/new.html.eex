@@ -1,5 +1,9 @@
+<div class=" bg-gray-100 border-2 border-gray-400 m-4 py-8 px-32 rounded-xl">
+
 <h1>New Gym</h1>
 
 <%= render "new_form.html", Map.put(assigns, :action, Routes.gym_path(@conn, :create)) %>
 
-<span><%= link "Back", to: Routes.gym_path(@conn, :index) %></span>
+<%= button("Back", to: Routes.gym_path(@conn, :index),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-4")  %>
+
+</div>

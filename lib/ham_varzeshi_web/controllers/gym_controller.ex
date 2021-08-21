@@ -1,10 +1,12 @@
 defmodule HamVarzeshiWeb.GymController do
   use HamVarzeshiWeb, :controller
 
-  import Ecto
-  import HamVarzeshi.Repo
+
+  import Ecto.Query
+  alias HamVarzeshi.Repo
   alias HamVarzeshi.App
   alias HamVarzeshi.App.Gym
+  alias HamVarzeshi.App.UserGym
 
 
   plug HamVarzeshiWeb.Plugs.RequireAuth when action in [:new, :create , :update , :edit , :delete]
@@ -15,7 +17,7 @@ defmodule HamVarzeshiWeb.GymController do
   end
 
   def new(conn, _params) do
-    changeset = App.change_gym(%Gym{})
+    changeset = App.change_gym(%Gym{}, %{})
     render(conn, "new.html", changeset: changeset)
   end
 
@@ -46,8 +48,21 @@ defmodule HamVarzeshiWeb.GymController do
   end
 
   def show(conn, %{"id" => id}) do
+
+    {intId, ""} = Integer.parse(id)
+    query = from ug in "user_gym",
+    where: ug.gym_id == ^intId,
+    select: ug.id,
+    order_by: ug.time
+
+    ug = Repo.all(query)
+    ug2 = Repo.get(UserGym , ug)
+    IO.puts("+++++++++")
+    IO.inspect( ug2 )
+    IO.puts("+++++++++")
+
     gym = App.get_gym!(id)
-    render(conn, "show.html", gym: gym)
+    render(conn, "show.html", gym: gym, ug: ug2)
   end
 
   def edit(conn, %{"id" => id}) do

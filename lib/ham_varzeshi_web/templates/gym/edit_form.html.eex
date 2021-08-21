@@ -5,21 +5,35 @@
     </div>
   <% end %>
 
-  <%= label f, :avatar %>
+  <%= label f, :avatar ,  class: "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
   <%= file_input f, :avatar %>
   <%= error_tag f, :avatar %>
 
 
-  <%= label f, :name %>
-  <%= text_input f, :name %>
+  <%= label f, :name , class: "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+  <div>
+  <%= text_input f, :name ,class: "form-control" %>
+  </div>
   <%= error_tag f, :name %>
 
 
-  <%= label f, :description %>
+  <div>
+  <%= label f, :description ,class: "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
   <%= text_input f, :description %>
   <%= error_tag f, :description %>
-
-  <div>
-    <%= submit "Save" %>
   </div>
+
+   <div>
+  <%= label f, :cost ,class: "block text-gray-500 font-bold md:text-left mb-1 md:mb-0 pr-4" %>
+  <%= number_input f, :cost,  [{:value, "10"}]  %>
+  <%= error_tag f, :cost %>
+  </div>
+
+
+
+  <div class="my-2">
+    <%= submit "Save" ,  class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-6" %>
+  </div>
+
+
 <% end %>

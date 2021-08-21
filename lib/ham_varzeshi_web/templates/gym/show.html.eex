@@ -1,25 +1,37 @@
-<h1>Show Gym</h1>
+<div class=" bg-gray-100 border-2 border-gray-400 m-4 py-8 px-32 rounded-xl">
+<h1 class="my-12 " >Show Gym</h1>
 
-<ul>
+<div class ="">
 
-  <li>
-    <div>Avatar:</div>
-    <img  class="object-contain h-25 w-25" src="<%= HamVarzeshi.Avatar.url({@gym.avatar , @gym}) %>"/>
-  </li>
+  <img class="border-2 border-gray-700 rounded-full w-36 h-36" src="<%= HamVarzeshi.Avatar.url({@gym.avatar , @gym}) %>"/>
 
-  <li>
+  <div class="m-4">
     <strong>Name:</strong>
     <%= @gym.name %>
-  </li>
+  </div>
 
-
-  <li>
+  <div class="m-4">
     <strong>Description:</strong>
     <%= @gym.description %>
-  </li>
+  </div>
 
+ <div class="m-4">
+    <strong> Cost:</strong>
+    <%= @gym.cost %>
+  </div>
 
-</ul>
+ <div class="m-4">
+    <strong> Cost:</strong>
+    <%= @ug %>
+  </div>
 
-<span><%= link "Edit", to: Routes.gym_path(@conn, :edit, @gym) %></span>
-<span><%= link "Back", to: Routes.gym_path(@conn, :index) %></span>
+</div>
+
+<div class="my-12">
+<%= if @conn.assigns.user && @conn.assigns.user.id == @gym.user_id do %>
+<%= button("Edit", to: Routes.gym_path(@conn, :edit, @gym),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-8")  %>
+<% end %>
+<%= button("Back", to: Routes.gym_path(@conn, :index),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-8")  %>
+</div>
+
+</div>

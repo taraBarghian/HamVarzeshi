@@ -1,5 +1,0 @@
-<h1>Reserve Gym</h1>
-
-<%= render "reserve_form.html", Map.put(assigns, :action, Routes.user_gym_path(@conn, :reserve, @user_gym)) %>
-
-<span><%= link "Back", to: Routes.user_gym_path(@conn, :index) %></span>

@@ -1,27 +1,34 @@
-<div class="text-8xl m-6">Listing Gyms</div>
+<div class="text-8xl m-8 ">Listing Gyms</div>
+
+
+ <%= button("New Gym", to: Routes.gym_path(@conn, :new),method: :get, class: "text-lg bg-gray-600 border-2 border-black rounded-lg text-white px-8 float-right")  %>
+
 
 
 <%= for gym <- @gyms do %>
 
-    <div class=" col bg-gray-100 border-2 border-white m-2 p-2 rounded-xl">
+    <div class=" col bg-gray-100 border-2 border-gray-400 m-2 p-2 rounded-xl">
       <div class=" flex justify-between p-4 m-4 ">
 
-        <img class="rounded-full w-32 h-32" src="<%= HamVarzeshi.Avatar.url({gym.avatar , gym}) %>" />
+        <img class="border-2 border-gray-700 rounded-full w-36 h-36" src="<%= HamVarzeshi.Avatar.url({gym.avatar , gym}) %>" />
         <div class="text-4xl text-b">
           <%= gym.name %>
 
           <div class="text-lg"><%= gym.description %></div>
+          <div class="text-lg"><%= gym.cost  %> <div class="inline"> $</div></div>
 
         </div>
 
 
-        <div class=" text-base px-8" >
+        <div class="mx-2" >
         <%= if @conn.assigns.user && @conn.assigns.user.id == gym.user_id do %>
-          <%= link "Edit", to: Routes.gym_path(@conn, :edit, gym) %>
-          <%= link "Delete", to: Routes.gym_path(@conn, :delete, gym), method: :delete, data: [confirm: "Are you sure?"] %>
+        <%= button("Edit", to: Routes.gym_path(@conn, :edit, gym),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-2")  %>
+        <%= button("Delete", to: Routes.gym_path(@conn, :delete, gym),method: :delete, data: [confirm: "Are you sure?"], class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black  px-2 " )  %>
+
         <% end %>
-        <%= link "Show", to: Routes.gym_path(@conn, :show, gym) %>
-        <%= link "Reserve", to: Routes.user_gym_path(@conn, :reserve, gym) %>
+        <%= button("Show", to: Routes.gym_path(@conn, :show, gym),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-2")  %>
+        <%= button("Reserve", to: Routes.user_gym_path(@conn, :index, gym),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-2")  %>
+
         </div>
 
 
@@ -29,6 +36,3 @@
     </div>
 
 <% end %>
-
-
-<span><%= link "New Gym", to: Routes.gym_path(@conn, :new) %></span>

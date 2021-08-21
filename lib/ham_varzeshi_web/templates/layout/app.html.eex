@@ -11,8 +11,9 @@
     <script defer type="text/javascript" src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </head>
 
-  <body class="bg-gray-200">
+  <body class="bg-gray-300">
 
+<div class="">
     <div class="flex items-center justify-between bg-gray-700 p-10">
 
       <div class="">
@@ -23,26 +24,32 @@
       <div>
         <%= if @conn.assigns[:user] do %>
           <div>
-          <%= button("Sing out", to: Routes.auth_path(@conn, :signout),method: :get, class: "bg-green-300 border-2 border-gray-700 rounded-tr-full text-black pd-4")  %>
+          <%= button("Sing out", to: Routes.auth_path(@conn, :signout),method: :get, class: "text-base bg-green-300 border-2 border-black rounded-lg text-black px-2")  %>
           </div>
           <div>
           reserved sessions
           </div>
         <% else %>
           <div>
-           <%= button("Sing in with google", to: Routes.auth_path(@conn, :request , "google"),method: :get, class: "bg-green-300 border-2 border-gray-700 rounded-tr-full text-black pd-4")  %>
+           <%= button("Sing in with google", to: Routes.auth_path(@conn, :request , "google"),method: :get, class: "text-base bg-green-300 border-2 border-black rounded-lg text-black px-2")  %>
           </div>
         <% end %>
       </div>
-
     </div>
 
+   <div class=" bg-green-300 w-full h-2"> </div>
 
-    <main role="main" class="container">
+   <main role="main" class="container">
+
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
       <%= @inner_content %>
     </main>
+
+
+<%# here %>
+</div>
 
   </body>
 </html>

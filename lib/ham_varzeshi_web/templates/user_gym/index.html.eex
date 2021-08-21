@@ -1,22 +1,18 @@
-<h1>Listing Users!</h1>
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Gym</th>
+<%= form_for @conn , Routes.user_gym_path(@conn, :reserve, @gym.id ) , fn f -> %>
 
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for gym <- @user_gym do %>
-    <tr>
+<div class=" bg-gray-100 border-2 border-gray-400 m-4 py-8 px-32 rounded-xl">
+<div>
+ <span class= "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4" >Day : </span>
+<%= text_input f , :for, name: "day" , type: "text" , class: "" %>
+</div>
 
-      <td><%= gym.user_id %></td>
-      <td><%= gym.gym_id %></td>
+<div>
+<span  class= "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4">Time :</span>
+<%= number_input f , :for, name: "time" , type: "number" , class: "" %>
+</div>
 
 
-    </tr>
+<%= submit "Save" %>
+
+</div>
 <% end %>
-  </tbody>
-</table>
