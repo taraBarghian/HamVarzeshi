@@ -1,0 +1,13 @@
+<%= form_for @conn , Routes.rate_path(@conn, :doRate, @gym_id ) , fn f -> %>
+
+<div class=" bg-gray-100 border-2 border-gray-400 m-4 py-8 px-32 rounded-xl">
+<div>
+<span  class= "block text-gray-700 font-bold md:text-left mb-1 md:mb-0 pr-4">Time :</span>
+<%= select f , :for, 1..5  , class: "" %>
+</div>
+
+
+<%= submit "Rate" %>
+
+</div>
+<% end %>

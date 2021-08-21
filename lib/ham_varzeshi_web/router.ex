@@ -25,6 +25,14 @@ defmodule HamVarzeshiWeb.Router do
 
   end
 
+  scope "/rate", HamVarzeshiWeb do
+    pipe_through :browser
+
+    get "/:id" , RateController, :index
+    post "/:id" , RateController, :doRate
+
+  end
+
   scope "/auth", HamVarzeshiWeb do
     pipe_through :browser
 

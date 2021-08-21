@@ -6,6 +6,7 @@ defmodule HamVarzeshiWeb.GymController do
   alias HamVarzeshi.Repo
   alias HamVarzeshi.App
   alias HamVarzeshi.App.Gym
+  alias HamVarzeshi.App.User
   alias HamVarzeshi.App.UserGym
 
 
@@ -52,17 +53,28 @@ defmodule HamVarzeshiWeb.GymController do
     {intId, ""} = Integer.parse(id)
     query = from ug in "user_gym",
     where: ug.gym_id == ^intId,
-    select: ug.id,
+    select: ug.user_id,
     order_by: ug.time
 
     ug = Repo.all(query)
-    ug2 = Repo.get(UserGym , ug)
-    IO.puts("+++++++++")
-    IO.inspect( ug2 )
-    IO.puts("+++++++++")
+    users = get_ugs(ug)
+
+    IO.puts("*************************************")
+    IO.inspect(users)
 
     gym = App.get_gym!(id)
-    render(conn, "show.html", gym: gym, ug: ug2)
+    render(conn, "show.html", gym: gym, users: users)
+  end
+
+  defp get_ugs(ugs) do
+    list = for ug <- ugs do
+       user = Repo.all(
+        from(user in User ,
+        where: user.id == ^ug)
+      )
+      [user_item] = user
+      user_item
+    end
   end
 
   def edit(conn, %{"id" => id}) do

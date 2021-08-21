@@ -20,10 +20,11 @@
     <%= @gym.cost %>
   </div>
 
- <div class="m-4">
-    <strong> Cost:</strong>
-    <%= @ug %>
+   <div class="m-4">
+    <strong> Rate:</strong>
+    <%= @gym.rating %>
   </div>
+
 
 </div>
 
@@ -32,6 +33,7 @@
 <%= button("Edit", to: Routes.gym_path(@conn, :edit, @gym),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-8")  %>
 <% end %>
 <%= button("Back", to: Routes.gym_path(@conn, :index),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-8")  %>
+<%= button("Rate", to: Routes.rate_path(@conn, :index, @gym.id),method: :get, class: "text-base bg-green-300 border-2 border-gray-700 rounded-lg text-black px-8")  %>
 </div>
 
 </div>
